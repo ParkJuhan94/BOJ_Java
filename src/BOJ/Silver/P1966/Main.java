@@ -37,6 +37,7 @@ public class Main {
                 maxImport = PQ.peek();
                 Node front = Q.poll();
 
+                //System.out.println("front : " + front.idx + ", " + front.importance);
                 //System.out.println("maximport : " + maxImport);
                 // Q의 제일 앞 문서가 원하는 idx 이고, 뒤에 더 높은 중요도가 없으면
                 if(front.idx == M &&
@@ -51,12 +52,6 @@ public class Main {
                 }
                 // 그렇지 않다면 바로 인쇄
                 else{
-                    Iterator iterator = PQ.iterator();
-                    while(iterator.hasNext())
-                        System.out.print(iterator.next() + " ");
-                    System.out.println();
-
-                    Q.remove();
                     PQ.poll();
                     cnt++;
                 }
@@ -70,6 +65,14 @@ public class Main {
 class Node{
     int idx;
     int importance;
+
+    @Override
+    public String toString() {
+        return "{" +
+                idx +
+                ", " + importance +
+                '}';
+    }
 
     public Node(int idx, int importance) {
         this.idx = idx;
